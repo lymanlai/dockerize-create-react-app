@@ -1,0 +1,18 @@
+# https://medium.com/@shakyShane/lets-talk-about-docker-artifacts-27454560384f
+# http://mherman.org/blog/2017/12/07/dockerizing-a-react-app/
+version: '3.5'
+
+services:
+
+  sample-app:
+    container_name: react-app
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
